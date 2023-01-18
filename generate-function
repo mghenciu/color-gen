@@ -1,0 +1,39 @@
+// Define generateColorPalette() function
+            function generateColorPalette() {
+                // Generate accent color
+                let accentHue = Math.floor(Math.random() * 360);
+                let accentSaturation = Math.floor(Math.random() * (88 - 0 + 1) + 0);
+                let accentLightness = Math.floor(Math.random() * (55 - 0 + 1) + 0);
+                let accentColor = 'hsl(' + accentHue + ', ' + accentSaturation + '%, ' + accentLightness + '%)';
+
+                // Generate light color
+                let lightHue = (accentHue + 60) % 360;
+                let lightLightness = Math.floor(Math.random() * (20 - 8) + 8);
+                let lightColor = 'hsl(' + lightHue + ', ' + accentSaturation + '%, 95%)';
+
+                // Generate dark background color
+                let darkHue = (accentHue + 180) % 360;
+                let darkLightness = Math.floor(Math.random() * (7 - 2) +
+                2); // Generate a random number between two numbers. Math.random() * (max-min) + min);
+                let darkColor = 'hsl(' + darkHue + ', 100%, ' + darkLightness + '%)';
+                console.log(darkColor);
+
+                // Generate complementary color
+                let complementHue = (accentHue + 180) % 360;
+                let complementColor = 'hsl(' + complementHue + ', 100%, 50%)';
+
+                // Return palette as an object
+                document.documentElement.style.setProperty('--primary-accent', accentColor);
+                document.documentElement.style.setProperty('--light', lightColor);
+                document.documentElement.style.setProperty('--dark', darkColor);
+                document.documentElement.style.setProperty('--comp', complementColor);
+
+
+                
+                return {
+                    accent: accentColor,
+                    light: lightColor,
+                    dark: darkColor,
+                    complement: complementColor
+                };
+            }
